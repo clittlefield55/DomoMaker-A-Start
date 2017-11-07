@@ -26,12 +26,12 @@ mongoose.connect(dbURL, (err) => {
 let redisURL = {
   hostname: 'localhost',
   port: 6379,
-}
+};
 
 let redisPASS;
 
-if(process.env.REDISCLOUD_URL) {
-  redisURL - url.parse(process.env.REDISCLOUD_URL);
+if (process.env.REDISCLOUD_URL) {
+  redisURL = url.parse(process.env.REDISCLOUD_URL);
   redisPASS = redisURL.auth.split(':')[1];
 }
 
@@ -55,7 +55,7 @@ app.use(session({
   secret: 'Domo Arigato',
   resave: true,
   saveUninitialized: true,
-  cookie:{
+  cookie: {
     httpOnly: true,
   },
 }));
